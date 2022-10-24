@@ -1,40 +1,27 @@
 class Solution {
 public:
-    void sol(int ind, vector<string>&arr, vector<string>&temp, int &res)
-   {
-      if(ind == arr.size())
-      {   
-          string s = "";
-          vector<int>v(26,0);
-          int flag = 0;
-
-          for(auto &it : temp) s += it;
-  
-          for(auto &it : s)
-          {
-            v[it-'a']++;
-            if(v[it-'a']>1) return;
-          } 
-
-          res = max(res,accumulate(v.begin(),v.end(),0));
-          return ;
-          
-      }
-      temp.push_back(arr[ind]);
-      sol(ind+1,arr,temp,res);
-      temp.pop_back();
-      sol(ind+1,arr,temp,res);
-      
-   }
-
-
+    int len{0};
     int maxLength(vector<string>& arr) {
-        
-        vector<string>temp;
-        int ind = 0;
-        int res = 0;
-        sol(ind,arr,temp,res);
-        return res;
-         
+        checkLen("" , arr , 0);
+        return len;
+    }
+    void checkLen(string str , vector<string>& arr , int itr){
+        if(!checkDuplicate(str))    
+            return ;
+        if(str.length() > len)
+            len = str.length();
+        for(int i = itr ; i<arr.size(); i++){
+            checkLen(str + arr[i] , arr , i);
+        }
+            
+    }
+    bool checkDuplicate(string word){
+        set<char> st;
+        for(auto ele : word){
+            if(st.find(ele) != st.end())  return false;
+            st.insert(ele)
+                ;
+        }
+        return true;
     }
 };
