@@ -7,10 +7,8 @@ public:
                 int check=matrix[0][i];
         while(r<matrix.size() && j<matrix[0].size()){
              //cout<<check;
-            if(matrix[r][j]==check)
-                   cout<<"";
-            else
-                return false;
+            if(matrix[r][j]!=check)
+                   return false;
             r++,j++;
            
         }
@@ -22,9 +20,7 @@ public:
              
         while(j<matrix.size() && r<matrix[0].size()){
              //cout<<check<<endl;
-            if(matrix[j][r]==check)
-                cout<<"";
-            else
+            if(matrix[j][r]!=check)
                 return false;
             j++;
             r++;
