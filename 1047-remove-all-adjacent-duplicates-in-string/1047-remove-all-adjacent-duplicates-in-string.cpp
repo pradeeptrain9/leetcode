@@ -5,17 +5,11 @@ public:
         for(int i=0;i<s.size();i++)
         {
             if(st.empty()) st.push(s[i]);
-            else
+            else if(st.top()==s[i])
             {
-                int c=0;
-                while(!st.empty() && st.top()==s[i])
-                {
-                    st.pop();
-                    c++;
-                }
-                if(c!=0) continue;
-                st.push(s[i]);
+               st.pop();
             }
+            else st.push(s[i]);
         }
         string ans="";
         for(;!st.empty();ans+=st.top(),st.pop());
