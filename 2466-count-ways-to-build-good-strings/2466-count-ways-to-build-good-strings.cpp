@@ -3,7 +3,7 @@ public:
     int countGoodStrings(int low, int high, int zero, int one) {
         vector<int> dp(high+1,0);
         dp[0] = 1;
-        int mod = 1000000007;
+        int mod = 1e9+7;
         
         for (int k = 1; k <= high; ++k)
         {
