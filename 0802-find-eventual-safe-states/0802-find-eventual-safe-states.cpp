@@ -3,8 +3,7 @@ public:
     void son(int source, vector<bool>&safe,vector<vector<int>>&graph,vector<bool>&vis)
     {
         int cnt=0;
-        if(vis[source]) return;
-        if(safe[source]) return;
+        if(vis[source] || safe[source]) return;
         vis[source]=true;
         for(int i=0;i<graph[source].size();i++)
         {
